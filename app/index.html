@@ -9,11 +9,14 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="/styles/geodatadisplay.css">
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
   </head>
   <body ng-app="geodatadisplay2App">
     <!--[if lt IE 7]>
@@ -25,8 +28,7 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Documentation</a></li>
+          <li><a ng-href="#/documentation">Documentation</a></li>
           <li><a ng-href="#/example">Examples</a></li>
         </ul>
         <h3 class="text-muted">geodatadisplay2</h3>
@@ -67,15 +69,22 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/examples.js"></script>
-        <script src="scripts/directives/geodatadisplay.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js({.tmp,app}) scripts/geodatadisplay.js -->
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/examples.js"></script>
+    <script src="scripts/controllers/geodatadisplayctrl.js"></script>
+    <script src="scripts/directives/geodatadisplay.js"></script>
+    <script src="scripts/directives/map.js"></script>
+    <script src="scripts/directives/datasource.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

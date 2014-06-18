@@ -1,0 +1,6 @@
+<geodatadisplay>
+	<dataSource url="" type="jsonp"></dataSource>
+	<map></map>
+	<grid></grid>
+	<filter></filter>
+</geodatadisplay>

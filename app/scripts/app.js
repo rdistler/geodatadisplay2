@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var geodatadisplay = angular
   .module('geodatadisplay2App', [
     'ngAnimate',
     'ngCookies',
@@ -23,13 +23,15 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .when('/example',{
         templateUrl: 'views/example.html',
-        controller: 'ExampleCtrl'
+        controller: 'GeoDataDisplayCtrl'
+      })
+       .when('/documentation',{
+        templateUrl: 'views/documentation.html'
+      })
+      .when('/data', {
+      	templateUrl: '/views/data.html'
       })
       .otherwise({
         redirectTo: '/'

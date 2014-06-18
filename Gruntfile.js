@@ -393,7 +393,6 @@ module.exports = function (grunt) {
     'concat',
     'ngmin',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'filerev',
@@ -406,4 +405,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+  
+  
 };

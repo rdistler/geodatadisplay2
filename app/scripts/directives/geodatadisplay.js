@@ -1,15 +1,11 @@
-angular.module('geodatadisplay2App').directive('geodatadisplay', function () {
-  var linker = function (scope, element, attrs) {
-  	console.log(element);
-  	element.append('<div>test</div>');
+geodatadisplay.directive('geodatadisplay', function() {
+	var linker = function(scope, element, attrs) {
+		console.log('Linker function in geodatadisplay directive');
 
-  };
-  var controller = function ($scope) {
-  	console.log('directive working');
-  };
-// Pending };
-  return {
-    restrict: 'E',
-    controller: controller,
-    link: linker
-}; });
+	};
+	return {
+		restrict : 'A',
+		link : linker,
+		templateUrl : 'views/map.html'
+	};
+}); 
