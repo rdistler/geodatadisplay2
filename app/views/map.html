@@ -1,14 +1,11 @@
 <div ng-include="'/views/geodatadisplay_header.html'"></div>
+Zoom level: {{currentZoom}}
+<br/>
+DIRscope {{dirscope}}
+Random {{randomNumber()}}
+Zoom {{zoom}}
 
-<div id="myTabContent" class="tab-content">
-	<div class="tab-pane fade active in" id="Map">
-		<div map id="map"></div>
-	</div>
-	<div class="tab-pane fade" id="Data">
-		<p>
-			Data table displayed here!		
-		</p>
-	</div>
+<div map id="map" dirscope="moose"></div>
 
-</div>
+
 

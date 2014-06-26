@@ -8,6 +8,7 @@
  * Controller of the geodatadisplay2App
  */
 geodatadisplay
-  .controller('GeoDataDisplayCtrl', function ($scope) {
+  .controller('GeoDataDisplayCtrl', ['$scope', function ($scope) {
     $scope.comment ="This is the geodatadisplaycontroller";
-  });
+
+  }]);

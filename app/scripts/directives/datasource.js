@@ -1,21 +1,9 @@
-geodatadisplay.directive('datasource', function () {
+geodatadisplay.directive('dataset', function () {
   var linker = function (scope, element, attrs) {
-  	//element.append('<script></script>');
-  	console.log(scope);
+  	console.log('Executing Linker function for dataset directive');
 
   };
-  var controller = function ($scope, $compile, $http) {
-  	console.log('datasource directive working');
-  	
-  };
-  console.log("executing compilter for datasource directive");
-// Pending };
   return {
     restrict: 'E',
-    scope: {
-    	type: "=type"
-    },
-    controller: controller,
-    link: linker,
-    templateUrl: 'views/datasourceDirective.html'
+    link: linker
 }; });
