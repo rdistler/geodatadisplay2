@@ -1,10 +1,13 @@
 geodatadisplay.directive('geodatadisplay', function() {
-	var linker = function(scope, element, attrs) {
-		console.log('Executing Linker function in geodatadisplay directive');
+    var linker = function(scope, element, attrs) {
+        console.log('Executing Linker function in geodatadisplay directive');
 
-	};
-	return {
-		restrict : 'E',
-		link : linker
-	};
-}); 
+        //console.log('dataSetRepository length = ' + controllers.dataSetRepository.length);
+
+    };
+    return {
+        restrict: 'E',
+        link: linker,
+        controller: 'GeoDataDisplayCtrl'
+    };
+});

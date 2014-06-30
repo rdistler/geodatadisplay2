@@ -1,8 +1,20 @@
 
 <geodatadisplay>
-	<dataset></dataset>
-	<dataset></dataset>
-	<map/>
+	<dataset name="parks" src="http://data.mo.gov/api/rsfsfs"></dataset>
+	<dataset name="hospitals" src="http://data.mo.gov/api/xksjfa"></dataset>
+	<dataset name="offices" src="http://data.mo.gov/api/xksjfa"></dataset>
+	<dataset name="license offices" src="http://data.mo.gov/api/xksjfa"></dataset>
+	<dataset name="new liquor licenses" src="http://data.mo.gov/resource/dymb-xy5c.json"></dataset>
+	
+	
+	<ul>
+		<li ng-repeat="dataset in datasets">
+			<label><input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="dataset.loadDataSet(this)"> {{dataset.name}} </label>
+		</li>
+	<ul>
+
+
+	<map options=""/>
 	<datagrid/>
 </geodatadisplay>
 

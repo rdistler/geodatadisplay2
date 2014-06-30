@@ -36,4 +36,5 @@ var geodatadisplay = angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .value('version', '0.0.1');
