@@ -1,4 +1,4 @@
-geodatadisplay.directive('datagrid', function() {
+geodatadisplayModule.directive('datagrid', function() {
     var linker = function(scope, element, attrs) {
         console.log('Executing Linker function for datagrid directive');
 

@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var geodatadisplay = angular
+var geodatadisplayModule = angular
   .module('geodatadisplay2App', [
     'ngAnimate',
     'ngCookies',

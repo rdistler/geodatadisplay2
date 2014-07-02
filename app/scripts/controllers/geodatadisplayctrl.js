@@ -7,15 +7,12 @@
  * # MainCtrl
  * Controller of the geodatadisplay2App
  */
-geodatadisplay
-  .controller('GeoDataDisplayCtrl', ['$scope', 'dataSetRepository', function ($scope, dataSetRepository) {
+geodatadisplayModule
+  .controller('GeoDataDisplayCtrl', ['$scope', 'geodatadisplayModel', function ($scope, geodatadisplayModel) {
   	console.log('Scope for GeoDataDisplayCtrl');
   	console.dir($scope);
-  	console.log('dataSetRepository');
-  	console.dir(dataSetRepository);
-    $scope.comment ="This is the geodatadisplaycontroller";
-    $scope.datasets = dataSetRepository.datasets;
 
-    this.dataSetRepository = dataSetRepository;
+    $scope.geodatadisplayModel = geodatadisplayModel;
+
 
   }]);

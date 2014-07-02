@@ -1,0 +1,21 @@
+geodatadisplayModule.directive('geodatadisplaymap', function() {
+        var linker = function(scope, element, attrs) {
+            console.log('Executing Linker function for map directive');
+
+            var myOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng(38.5704613, -92.1737346),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(element['0'], myOptions);
+            scope.geodatadisplayModel.geodatadisplaymap.map = map;
+        }
+
+            return {
+                restrict: 'E',
+                link: linker,
+                require: '^geodatadisplay',
+                template: '<div></div>',
+                replace: true
+            };
+        });

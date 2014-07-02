@@ -1,8 +1,9 @@
-geodatadisplay.directive('geodatadisplay', function() {
+'use strict';
+geodatadisplayModule.directive('geodatadisplay', function() {
     var linker = function(scope, element, attrs) {
         console.log('Executing Linker function in geodatadisplay directive');
 
-        //console.log('dataSetRepository length = ' + controllers.dataSetRepository.length);
+        //console.log('datasetRepository length = ' + controllers.datasetRepository.length);
 
     };
     return {

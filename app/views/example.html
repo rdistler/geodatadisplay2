@@ -1,20 +1,24 @@
 
 <geodatadisplay>
+	{{geodatadisplaymap.name}}
 	<dataset name="parks" src="http://data.mo.gov/api/rsfsfs"></dataset>
 	<dataset name="hospitals" src="http://data.mo.gov/api/xksjfa"></dataset>
 	<dataset name="offices" src="http://data.mo.gov/api/xksjfa"></dataset>
-	<dataset name="license offices" src="http://data.mo.gov/api/xksjfa"></dataset>
-	<dataset name="new liquor licenses" src="http://data.mo.gov/resource/dymb-xy5c.json"></dataset>
+	<dataset name="DOR license offices" src="http://data.mo.gov/api/views/835g-7keg/rows.json"></dataset>
+	<dataset name="new liquor licenses" src="http://data.mo.gov/api/views/dymb-xy5c/rows.json"></dataset>
+	<dataset name="county license" src="http://data.mo.gov/api/views/hbmv-rqk9/rows.json">
+
+	</dataset>
 	
 	
 	<ul>
-		<li ng-repeat="dataset in datasets">
-			<label><input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="dataset.loadDataSet(this)"> {{dataset.name}} </label>
+		<li ng-repeat="dataset in geodatadisplayModel.datasetRepository.datasets">
+			<label><input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="geodatadisplayModel.displayDataset(dataset)"> {{dataset.name}} </label>
 		</li>
-	<ul>
+	</ul>
 
 
-	<map options=""/>
+	<geodatadisplaymap id="map" options=""/>
 	<datagrid/>
 </geodatadisplay>
 
