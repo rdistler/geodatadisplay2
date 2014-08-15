@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.css" />
     <!-- endbower -->
+    <link rel="stylesheet" type="text/css" href="bower_components/ngReactGrid/build/css/ngReactGrid.css">
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -29,6 +30,7 @@
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
           <li><a ng-href="#/documentation">Documentation</a></li>
+          <li><a href="/docs">API Docs</a></li>
           <li><a ng-href="#/example">Examples</a></li>
         </ul>
         <h3 class="text-muted">geodatadisplay2</h3>
@@ -37,7 +39,7 @@
       <div ng-view=""></div>
 
       <div class="footer">
-      
+      This is the footer
       </div>
     </div>
 
@@ -70,8 +72,15 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/datatables/media/js/jquery.dataTables.js"></script>
+    <script src="bower_components/react/react.js"></script>
     <!-- endbower -->
+    <script src="bower_components/ngReactGrid/build/js/ngReactGrid.js"></script>
     <!-- endbuild -->
+
+    <script src="scripts/models/dataset.js"></script>
+    <script src="scripts/models/map.js"></script>
+    <script src="scripts/models/datasetRepository.js"></script>
+    <script src="scripts/models/displayManager.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
@@ -81,14 +90,12 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/geodatadisplayctrl.js"></script>
-    <script src="scripts/directives/geodatadisplay.js"></script>
-    <script src="scripts/directives/geodatadisplaymap.js"></script>
-    <script src="scripts/directives/datasource.js"></script>
-    <script src="scripts/directives/datagrid.js"></script>
-    <script src="scripts/services/datasetrepository.js"></script>
-    <script src="scripts/models/dataset.js"></script>
-    <script src="scripts/models/geodatadisplaymap.js"></script>
-    <script src="scripts/models/geodatadisplay.js"></script>
+    
+    <script src="scripts/directives/dvContainer.js"></script>
+    <script src="scripts/directives/dvMap.js"></script>
+    <script src="scripts/directives/dvDataset.js"></script>
+
+
     <!-- endbuild -->
 </body>
 </html>

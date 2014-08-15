@@ -1,4 +1,5 @@
-geodatadisplayModule.directive('geodatadisplaymap', function() {
+'use strict';
+geodatadisplayModule.directive('dvMap', function() {
         var linker = function(scope, element, attrs) {
             console.log('Executing Linker function for map directive');
 
@@ -8,13 +9,13 @@ geodatadisplayModule.directive('geodatadisplaymap', function() {
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(element['0'], myOptions);
-            scope.geodatadisplayModel.geodatadisplaymap.map = map;
+            scope.displayManager.map = map;
         }
 
             return {
                 restrict: 'E',
                 link: linker,
-                require: '^geodatadisplay',
+                require: '^dvContainer',
                 template: '<div></div>',
                 replace: true
             };

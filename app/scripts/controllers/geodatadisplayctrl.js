@@ -2,17 +2,25 @@
 
 /**
  * @ngdoc function
- * @name geodatadisplay2App.controller:MainCtrl
+ * @name geodatadisplay2App.controller.GeoDataDisplayCtrl
  * @description
- * # MainCtrl
+ * GeoDataDisplayCtrl
  * Controller of the geodatadisplay2App
  */
 geodatadisplayModule
-  .controller('GeoDataDisplayCtrl', ['$scope', 'geodatadisplayModel', function ($scope, geodatadisplayModel) {
-  	console.log('Scope for GeoDataDisplayCtrl');
-  	console.dir($scope);
+    .controller('GeoDataDisplayCtrl', ['$scope', 'displayManager',
+        function($scope, displayManager) {
+            console.log('Scope for GeoDataDisplayCtrl');
+            
+            //var display = new DisplayManager();
+            $scope.displayManager = displayManager;
+            $scope.grid = displayManager.grid;
+            // $scope.grid = geodatadisplayModel.grid;
 
-    $scope.geodatadisplayModel = geodatadisplayModel;
+            console.dir($scope);
 
 
-  }]);
+
+
+        }
+    ]);
