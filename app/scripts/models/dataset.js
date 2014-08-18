@@ -94,6 +94,10 @@ Dataset.prototype.getDataForDataTable = function($scope) {
     return defer.promise;
 }
 
+Dataset.prototype.getGMmarkers = function(){
+
+};
+
 /**
  * @function
  * @name getGeoJSON

@@ -29,9 +29,9 @@ DisplayManager.prototype.displayDataset = function(dataset) {
     console.log("Displaying dataset");
     var _this = this;
 
-    // dataset.getGeoJSON().then(function(geoJSON) {
-    //     _this.map.addGeoJSONlayer(geoJSON);
-    // });
+    dataset.getGeoJSON().then(function(geoJSON) {
+        _this.map.data.addGeoJson(geoJSON);
+    });
 
     dataset.getDataForDataTable().then(function(data) {
         _this.grid.data = data;
