@@ -10,11 +10,15 @@ function DisplayManager(map, datasetRepository) {
     this.datasetRepository = datasetRepository;
     this.grid = {
         columnDefs: [{
-            field: "dbaname",
+            field: "name",
             displayName: "Name"
         }, {
-            field: "license_number",
-            displayName: "Number"
+            field: "address",
+            displayName: "Address"
+        },
+        {
+            field:"city",
+            displayName: "City"
         }]
     };
 

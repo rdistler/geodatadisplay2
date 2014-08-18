@@ -15,7 +15,9 @@ geodatadisplayModule.directive('dvDataset', ['$resource', '$q', '$http',
             dataset.name = attrs.name;
             dataset.q = q;
             dataset.http = http;
-
+            if (attrs.columnMap) {
+                dataset.column_mapping = JSON.parse(attrs.columnMap);
+            }
             scope.displayManager.datasetRepository.addDataset(dataset);
 
         };

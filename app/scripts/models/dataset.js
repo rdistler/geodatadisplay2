@@ -32,14 +32,17 @@ Dataset.prototype.getData = function() {
 
         // set columns property
         var columns = [];
+        var columnsByName = {};
         for (var i = 0; i < data.meta.view.columns.length; i++) {
             var column = data.meta.view.columns[i];
             if (column.id != -1) {
                 column.positionInArray = i;
                 columns.push(column);
+                columnsByName[column.fieldName] = column;
             }
         }
         _this.columns = columns;
+        _this.columnsByName = columnsByName;
         defer.resolve(data);
     }).
     error(function(data, status, headers, config) {
@@ -82,10 +85,12 @@ Dataset.prototype.getDataForDataTable = function($scope) {
             var result = [];
             angular.forEach(dataset.data.data, function(recordArray) {
                 var recordObj = {};
-                for (var x = 0; x < dataset.columns.length; x++) {
-                    var column = dataset.columns[x];
-                    recordObj[column.fieldName] = recordArray[column.positionInArray]
-                }
+                recordObj.name = recordArray[dataset.columnsByName[dataset.column_mapping.name].positionInArray];
+                recordObj.address = recordArray[dataset.columnsByName[dataset.column_mapping.address].positionInArray];
+                // for (var x = 0; x < dataset.columns.length; x++) {
+                //     var column = dataset.columns[x];
+                //     recordObj[column.name] = recordArray[column.positionInArray]
+                // }
                 result.push(recordObj);
             });
             defer.resolve(result);
