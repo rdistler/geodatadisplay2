@@ -15,12 +15,15 @@ function DisplayManager(map, datasetRepository) {
         }, {
             field: "address",
             displayName: "Address"
-        },
-        {
-            field:"city",
+        }, {
+            field: "city",
             displayName: "City"
         }]
     };
+
+    this.displayMapLayer = function(data){
+        console.log(data);
+    }
 
 }
 
@@ -33,12 +36,29 @@ DisplayManager.prototype.displayDataset = function(dataset) {
     console.log("Displaying dataset");
     var _this = this;
 
-    dataset.getGeoJSON().then(function(geoJSON) {
-        _this.map.data.addGeoJson(geoJSON);
+    dataset.filter()
+    .then(function(dataset){
+        _this.map.displayDataset.apply(_this.map, [dataset]);
+    })
+    .then(function(){
+        console.log('Displaying grid');
     });
 
-    dataset.getDataForDataTable().then(function(data) {
-        _this.grid.data = data;
-        console.dir(_this.grid);
-    });
+    //this.displayMapLayer();
+    //this.displayGridLayer();
+
+
+    // dataset.getGeoJSON().then(function(geoJSON) {
+    //     _this.map.data.addGeoJson(geoJSON);
+    // });
+
+    // dataset.getGridData().then(function(data) {
+    //     if (_this.grid.data instanceof Array) {
+    //         _this.grid.data = _this.grid.data.concat(data);
+    //     } else {
+    //         _this.grid.data = data;
+    //     }
+
+    //     console.dir(_this.grid);
+    // });
 }

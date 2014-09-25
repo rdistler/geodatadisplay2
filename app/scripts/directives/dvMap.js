@@ -9,7 +9,8 @@ geodatadisplayModule.directive('dvMap', function() {
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(element['0'], myOptions);
-            scope.displayManager.map = map;
+            map.mc = new MarkerClusterer(map);
+            scope.displayManager.map.google_map = map;
         }
 
             return {

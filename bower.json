@@ -14,7 +14,9 @@
     "angular-route": "1.2.16",
     "datatables": "~1.10.0",
     "ngReactGrid": "~0.6.5",
-    "react": "~0.10.0"
+    "react": "~0.10.0",
+    "gmaps-markerclusterer-plus": "~2.1.1",
+    "underscore": "~1.7.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

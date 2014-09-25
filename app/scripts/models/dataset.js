@@ -15,6 +15,21 @@ function Dataset($http, $q) {
 
 }
 
+Dataset.prototype.filter = function() {
+    var defer = this.q.defer();
+    var _this = this;
+    this.getGeoJSON().then(function(geoJSON){
+        _this.filtered = geoJSON;
+        defer.resolve(_this);
+    })
+    
+
+    return defer.promise;
+};
+
+
+
+
 /**
  * @function getData
  * @return {json}
@@ -75,7 +90,7 @@ Dataset.prototype.getData = function() {
 //     return defer.promise;
 // }
 
-Dataset.prototype.getDataForDataTable = function($scope) {
+Dataset.prototype.getGridData = function($scope) {
     var defer = this.q.defer();
     var dataset = this;
     if (dataset.arrayOfObjects) {
@@ -87,10 +102,6 @@ Dataset.prototype.getDataForDataTable = function($scope) {
                 var recordObj = {};
                 recordObj.name = recordArray[dataset.columnsByName[dataset.column_mapping.name].positionInArray];
                 recordObj.address = recordArray[dataset.columnsByName[dataset.column_mapping.address].positionInArray];
-                // for (var x = 0; x < dataset.columns.length; x++) {
-                //     var column = dataset.columns[x];
-                //     recordObj[column.name] = recordArray[column.positionInArray]
-                // }
                 result.push(recordObj);
             });
             defer.resolve(result);
@@ -99,7 +110,7 @@ Dataset.prototype.getDataForDataTable = function($scope) {
     return defer.promise;
 }
 
-Dataset.prototype.getGMmarkers = function(){
+Dataset.prototype.getGMmarkers = function() {
 
 };
 
@@ -152,6 +163,12 @@ Dataset.prototype.getGeoJSON = function() {
                 feature.geometry.coordinates.push(parseFloat(data.data[x][locationColumn.positionInArray][2]));
                 feature.geometry.coordinates.push(parseFloat(data.data[x][locationColumn.positionInArray][1]));
             }
+            else if(_.has(columns,'latitude') && _.has(columns,'longitude')){
+                feature.geometry.coordinates.push(parseFloat(data.data[x][columns['latitude'].positionInArray]));
+                feature.geometry.coordinates.push(parseFloat(data.data[x][columns['longitude'].positionInArray]));
+            }
+            // else if(_.contains(columns, value) )
+            console.log('Contains latitude ' + _.contains(columns, 'latitude'));
 
             for (column in columns) {
                 feature.properties[column] = data.data[x][columns[column].positionInArray];
