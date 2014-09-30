@@ -1,6 +1,6 @@
 'use strict';
-geodatadisplayModule.directive('dvDataset', ['$resource', '$q', '$http',
-    function($resource, $q, $http) {
+geodatadisplayModule.directive('dvDataset', ['$resource', '$q', '$http', 'util',
+    function($resource, $q, $http, util) {
         var q = $q;
         var http = $http;
         var linker = function(scope, element, attrs) {
@@ -18,6 +18,13 @@ geodatadisplayModule.directive('dvDataset', ['$resource', '$q', '$http',
             if (attrs.columnMap) {
                 dataset.column_mapping = JSON.parse(attrs.columnMap);
             }
+            if(attrs.iconColor){
+                dataset.iconColor = attrs.iconColor;
+            }
+            console.log(util.randomColor());
+            dataset.iconColor = util.randomColor();
+            dataset.icon = MapIconMaker.createMarkerIcon({'primaryColor': dataset.iconColor});
+            console.log(dataset.icon);
             scope.displayManager.datasetRepository.addDataset(dataset);
 
         };

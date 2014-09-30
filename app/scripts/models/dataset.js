@@ -41,6 +41,9 @@ Dataset.prototype.getData = function() {
 
     var _this = this;
 
+    if(this.data){
+        defer.resolve(this.data);
+    }
     this.http.jsonp(this.src + '?$jsonp=JSON_CALLBACK').
     success(function(data, status, headers, config) {
         _this.data = data;
@@ -110,9 +113,6 @@ Dataset.prototype.getGridData = function($scope) {
     return defer.promise;
 }
 
-Dataset.prototype.getGMmarkers = function() {
-
-};
 
 /**
  * @function
@@ -164,11 +164,11 @@ Dataset.prototype.getGeoJSON = function() {
                 feature.geometry.coordinates.push(parseFloat(data.data[x][locationColumn.positionInArray][1]));
             }
             else if(_.has(columns,'latitude') && _.has(columns,'longitude')){
-                feature.geometry.coordinates.push(parseFloat(data.data[x][columns['latitude'].positionInArray]));
                 feature.geometry.coordinates.push(parseFloat(data.data[x][columns['longitude'].positionInArray]));
+                feature.geometry.coordinates.push(parseFloat(data.data[x][columns['latitude'].positionInArray]));
             }
             // else if(_.contains(columns, value) )
-            console.log('Contains latitude ' + _.contains(columns, 'latitude'));
+            console.log('Contains latitude ' + _.has(columns, 'latitude'));
 
             for (column in columns) {
                 feature.properties[column] = data.data[x][columns[column].positionInArray];

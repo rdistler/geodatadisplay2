@@ -1,26 +1,26 @@
-
 <dv-container>
-	{{geodatadisplaymap.name}}
+    {{geodatadisplaymap.name}}
+    
+    <dv-dataset name="Credit Unions" src="http://data.mo.gov/api/views/r843-p6xb/rows.json"></dv-dataset>
+    
+    <dv-dataset name="DOR license offices" src="http://data.mo.gov/api/views/835g-7keg/rows.json" icon-color="#3b3837" column-map='{"name":"name", "address":"address1"}'></dv-dataset>
+    
+    <dv-dataset name="new liquor licenses" src="http://data.mo.gov/api/views/dymb-xy5c/rows.json" column-map='{"name":"dbaname", "address":"street"}'></dv-dataset>
+    
+    <dv-dataset name="county license" src="http://data.mo.gov/api/views/hbmv-rqk9/rows.json" column-map='{"name":"licensee_name", "address":"mailing_address_1"}'></dv-dataset>
+    
+    <dv-dataset name="Bison Location" src="https://data.mo.gov/api/views/kw9k-iwnn/rows.json" column-map='{"name":"esn", "address":"mailing_address_1"}'></dv-dataset>
 
-	<dv-dataset name="parks" src="http://data.mo.gov/api/rsfsfs" column-map='{"name":"name", "license_number":"number"}'></dv-dataset>
-	<dv-dataset name="hospitals" src="http://data.mo.gov/api/xksjfa"></dv-dataset>
-	<dv-dataset name="offices" src="http://data.mo.gov/api/xksjfa"></dv-dataset>
-	<dv-dataset name="DOR license offices" src="http://data.mo.gov/api/views/835g-7keg/rows.json"></dv-dataset>
-	<dv-dataset name="new liquor licenses" src="http://data.mo.gov/api/views/dymb-xy5c/rows.json" column-map='{"name":"dbaname", "address":"street"}'></dv-dataset>
-	<dv-dataset name="county license" src="http://data.mo.gov/api/views/hbmv-rqk9/rows.json" column-map='{"name":"licensee_name", "address":"mailing_address_1"}' ></dv-dataset>
-	<dv-dataset name="Bison Location" src="https://data.mo.gov/api/views/kw9k-iwnn/rows.json" column-map='{"name":"licensee_name", "address":"mailing_address_1"}' ></dv-dataset>
-	
-	<ul>
-		<li ng-repeat="dataset in displayManager.datasetRepository.datasets">
-			<label><input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="displayManager.displayDataset(dataset)"> {{dataset.name}} </label>
-		</li>
-	</ul>
+    <ul>
+        <li ng-repeat="dataset in displayManager.datasetRepository.datasets">
+            <label>
+                <input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="displayManager.toggleDataset(dataset)">
+                <img src="{{dataset.icon.icon.url}}" alt="icon" />{{dataset.name}} - {{dataset.src}}</label>
+        </li>
+    </ul>
 
 
-	<dv-map id="map" options=""></dv-map>
-	
-	<ng-react-grid grid="grid"></ng-react-grid>
+    <dv-map id="map" options=""></dv-map>
+
+    <ng-react-grid grid="grid"></ng-react-grid>
 </dv-container>
-
-
-

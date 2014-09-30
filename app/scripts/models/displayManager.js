@@ -5,10 +5,10 @@
  */
 
 
-function DisplayManager(map, datasetRepository) {
+function DisplayManager(map, datasetRepository,datagrid) {
     this.map = map;
-    this.datasetRepository = datasetRepository;
-    this.grid = {
+    this.datagrid = datagrid;
+    this.datagrid.grid = {
         columnDefs: [{
             field: "name",
             displayName: "Name"
@@ -21,7 +21,9 @@ function DisplayManager(map, datasetRepository) {
         }]
     };
 
-    this.displayMapLayer = function(data){
+    this.datasetRepository = datasetRepository;
+
+    this.displayMapLayer = function(data) {
         console.log(data);
     }
 
@@ -37,28 +39,37 @@ DisplayManager.prototype.displayDataset = function(dataset) {
     var _this = this;
 
     dataset.filter()
-    .then(function(dataset){
-        _this.map.displayDataset.apply(_this.map, [dataset]);
-    })
-    .then(function(){
-        console.log('Displaying grid');
-    });
+        .then(function(dataset) {
+            console.log('Displaying grid');
+            _this.datagrid.displayDataset.apply(_this.datagrid, [dataset]);
+            return dataset;
+        })
+        .then(function(dataset) {
+            _this.map.displayDataset.apply(_this.map, [dataset]);
+            return dataset;
+        });
 
-    //this.displayMapLayer();
-    //this.displayGridLayer();
 
+    dataset.displayed = true;
+}
 
-    // dataset.getGeoJSON().then(function(geoJSON) {
-    //     _this.map.data.addGeoJson(geoJSON);
-    // });
+DisplayManager.prototype.removeDataset = function(dataset) {
 
-    // dataset.getGridData().then(function(data) {
-    //     if (_this.grid.data instanceof Array) {
-    //         _this.grid.data = _this.grid.data.concat(data);
-    //     } else {
-    //         _this.grid.data = data;
-    //     }
+    console.log('Removing dataset');
+    dataset.displayed = false;
+    var _this = this;
+    _this.map.removeDataset.apply(_this.map, [dataset]);
+    _this.datagrid.removeDataset.apply(_this.datagrid, [dataset]);
 
-    //     console.dir(_this.grid);
-    // });
+    
+
+}
+
+DisplayManager.prototype.toggleDataset = function(dataset) {
+
+    if (dataset.displayed) {
+        this.removeDataset(dataset);
+    } else {
+        this.displayDataset(dataset);
+    }
 }

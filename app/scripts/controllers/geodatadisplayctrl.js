@@ -14,7 +14,7 @@ geodatadisplayModule
             
             //var display = new DisplayManager();
             $scope.displayManager = displayManager;
-            $scope.grid = displayManager.grid;
+            $scope.grid = displayManager.datagrid.grid;
             // $scope.grid = geodatadisplayModel.grid;
 
             console.dir($scope);
