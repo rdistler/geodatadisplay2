@@ -35,8 +35,8 @@ module.exports = function(grunt) {
                 src: ['<%= yeoman.app %>/scripts/{,*/}*.js','README.md'],
                 dest: '<%= yeoman.app %>/docs',
                 options: {
-                    "template": "./documentation/template",
-                    "configure": "./documentation/template/jsdoc.conf.json"
+                    'template': './documentation/template',
+                    'configure': './documentation/template/jsdoc.conf.json'
                 }
             }
         },

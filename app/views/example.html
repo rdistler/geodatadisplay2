@@ -15,7 +15,7 @@
         <li ng-repeat="dataset in displayManager.datasetRepository.datasets">
             <label>
                 <input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="displayManager.toggleDataset(dataset)">
-                <img src="{{dataset.icon.icon.url}}" alt="icon" />{{dataset.name}} - {{dataset.src}}</label>
+                <img src="{{dataset.icon.icon.url}}" alt="icon" />{{dataset.name}}</label>
         </li>
     </ul>
 

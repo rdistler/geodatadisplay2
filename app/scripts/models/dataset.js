@@ -12,6 +12,8 @@ function Dataset($http, $q) {
     this.name;
     this.src;
     this.data; //used to store raw json 
+    this.q = $q;
+    this.http = $http;
 
 }
 
