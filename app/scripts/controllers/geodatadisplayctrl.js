@@ -16,8 +16,30 @@ geodatadisplayModule
             $scope.displayManager = displayManager;
             $scope.grid = displayManager.datagrid.grid;
             // $scope.grid = geodatadisplayModel.grid;
+            
+            /*
+            This logic needs to be moved out of here and into a directive.
+             */
             if (localStorage.geodatasets) {
                 var geodatasets = JSON.parse(localStorage.geodatasets);
+
+                angular.forEach(geodatasets, function(value, key) {
+                    var dataset = new Dataset($http, $q);
+                    dataset.src = 'http://data.mo.gov/api/views/' + value.view.id + '/rows.json';
+                    dataset.name = value.view.name;
+                    dataset.column_mapping = {
+                        "name": "name",
+                        "address": "address"
+                    };
+                    dataset.iconColor = util.randomColor();
+                    dataset.icon = MapIconMaker.createMarkerIcon({
+                        'primaryColor': dataset.iconColor
+                    });
+                    $scope.displayManager.datasetRepository.datasets.push(dataset);
+                });
+
+                localStorage.geodatasets = JSON.stringify(geodatasets);
+                console.dir(geodatasets);
             } else {
                 moGovDataCatalog.get(function(data) {
                     var geodatasets = [];
@@ -35,26 +57,28 @@ geodatadisplayModule
                             }
                         }
                     });
+
+                    angular.forEach(geodatasets, function(value, key) {
+                        var dataset = new Dataset($http, $q);
+                        dataset.src = 'http://data.mo.gov/api/views/' + value.view.id + '/rows.json';
+                        dataset.name = value.view.name;
+                        dataset.column_mapping = {
+                            "name": "name",
+                            "address": "address"
+                        };
+                        dataset.iconColor = util.randomColor();
+                        dataset.icon = MapIconMaker.createMarkerIcon({
+                            'primaryColor': dataset.iconColor
+                        });
+                        $scope.displayManager.datasetRepository.datasets.push(dataset);
+                    });
+
+                    localStorage.geodatasets = JSON.stringify(geodatasets);
+                    console.dir(geodatasets);
                 });
             }
 
-            angular.forEach(geodatasets, function(value, key) {
-                var dataset = new Dataset($http, $q);
-                dataset.src = 'http://data.mo.gov/api/views/' + value.view.id + '/rows.json';
-                dataset.name = value.view.name;
-                dataset.column_mapping = {
-                    "name": "name",
-                    "address": "address"
-                };
-                dataset.iconColor = util.randomColor();
-                dataset.icon = MapIconMaker.createMarkerIcon({
-                    'primaryColor': dataset.iconColor
-                });
-                $scope.displayManager.datasetRepository.datasets.push(dataset);
-            });
 
-            localStorage.geodatasets = JSON.stringify(geodatasets);
-            console.dir(geodatasets);
 
 
             console.dir($scope);

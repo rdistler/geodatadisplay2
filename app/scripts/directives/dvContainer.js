@@ -9,6 +9,8 @@ geodatadisplayModule.directive('dvContainer', function() {
     return {
         restrict: 'E',
         link: linker,
-        controller: 'GeoDataDisplayCtrl'
+        transclude: true,
+        controller: 'GeoDataDisplayCtrl',
+        templateUrl: 'views/dvcontainer.html'
     };
 });
