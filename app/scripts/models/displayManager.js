@@ -5,7 +5,7 @@
  */
 
 
-function DisplayManager(map, datasetRepository,datagrid) {
+function DisplayManager(map, datasetRepository,datagrid, datasetCatalogRepository) {
     this.map = map;
     this.datagrid = datagrid;
     this.datagrid.grid = {
@@ -22,10 +22,11 @@ function DisplayManager(map, datasetRepository,datagrid) {
     };
 
     this.datasetRepository = datasetRepository;
+    this.datasetCatalogRepository = datasetCatalogRepository;
 
-    this.displayMapLayer = function(data) {
-        console.log(data);
-    }
+    // this.displayMapLayer = function(data) {
+    //     console.log(data);
+    // }
 
 }
 

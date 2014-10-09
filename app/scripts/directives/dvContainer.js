@@ -9,6 +9,7 @@ geodatadisplayModule.directive('dvContainer', function() {
     return {
         restrict: 'E',
         link: linker,
+        //compile: compile,
         transclude: true,
         controller: 'GeoDataDisplayCtrl',
         templateUrl: 'views/dvcontainer.html'

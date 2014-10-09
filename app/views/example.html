@@ -1,11 +1,12 @@
-
 <dv-container>
 
-    <dv-dataset name="Credit Unions" src="http://data.mo.gov/api/views/r843-p6xb/rows.json"></dv-dataset>
+    <!--     <dv-dataset name="Credit Unions" src="http://data.mo.gov/api/views/r843-p6xb/rows.json"></dv-dataset>-->
+    <dv-dataset-catalog name="datamogov" src="http://data.mo.gov/api/search/views.json?federation_filter=143"/>
+    <dv-dataset-catalog name="datakcmoorg" src="http://data.kcmo.org/api/search/views.json"/>
 
-<!--     <dv-dataset name="DOR license offices" src="http://data.mo.gov/api/views/835g-7keg/rows.json" icon-color="#3b3837" column-map='{"name":"name", "address":"address1"}'></dv-dataset>
+    <dv-dataset name="DOR license offices" src="http://data.mo.gov/api/views/835g-7keg/rows.json" icon-color="#3b3837" column-map='{"name":"name", "address":"address1"}'/>
 
-    <dv-dataset name="new liquor licenses" src="http://data.mo.gov/api/views/dymb-xy5c/rows.json" column-map='{"name":"dbaname", "address":"street"}'></dv-dataset>
+    <!-- <dv-dataset name="new liquor licenses" src="http://data.mo.gov/api/views/dymb-xy5c/rows.json" column-map='{"name":"dbaname", "address":"street"}'></dv-dataset>
 
     <dv-dataset name="county license" src="http://data.mo.gov/api/views/hbmv-rqk9/rows.json" column-map='{"name":"licensee_name", "address":"mailing_address_1"}'></dv-dataset>
 

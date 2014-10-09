@@ -33,10 +33,15 @@ var geodatadisplayModule = angular
     // .factory('dataset', ['$http', '$q', function($http, $q){
     //     return Dataset;
     // }])
-    .factory('datasetRepository', [
+    .factory('datasetRepository', ['util',
 
+        function(util) {
+            return new DatasetRepository(util);
+        }
+    ])
+    .factory('datasetCatalogRepository', [
         function() {
-            return new DatasetRepository();
+            return new DatasetCatalogRepository();
         }
     ])
     .factory('map', [
@@ -51,9 +56,9 @@ var geodatadisplayModule = angular
             return new DataGrid();
         }
     ])
-    .factory('displayManager', ['map', 'datasetRepository', 'datagrid',
-        function(map, datasetRepository, datagrid) {
-            return new DisplayManager(map, datasetRepository, datagrid);
+    .factory('displayManager', ['map', 'datasetRepository', 'datagrid', 'datasetCatalogRepository', 
+        function(map, datasetRepository, datagrid,datasetCatalogRepository) {
+            return new DisplayManager(map, datasetRepository, datagrid, datasetCatalogRepository);
         }
     ])
     .factory('moGovDataCatalog', function($resource) {

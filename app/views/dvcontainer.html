@@ -15,11 +15,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Map</a>
+                    <li class="active"><a href="#">Map View</a>
                     </li>
-                    <li><a href="#">Data Grid</a>
+                    <li><a href="#">Data View</a>
                     </li>
-                    
+
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
@@ -36,19 +36,19 @@
         <div class="col-md-8">
             <dv-map id="map" options=""></dv-map>
 
-           <!--  <ng-react-grid grid="grid"></ng-react-grid> -->
+            <!--  <ng-react-grid grid="grid"></ng-react-grid> -->
         </div>
         <div class="col-md-4">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" data-target="#datasets">Datasets</a>
+                            <a data-toggle="collapse" data-parent="#accordion" data-target="#datasets">Default Catalog</a>
                         </h4>
                     </div>
-                    <div id="datasets" class="panel-collapse collapse">
+                    <div id="datasets" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <ul>
+                            <ul class="list-unstyled">
                                 <li ng-repeat="dataset in displayManager.datasetRepository.datasets">
                                     <label>
                                         <input type="checkbox" name="{{dataset.name}}" value="{{dataset.src}}" ng-click="displayManager.toggleDataset(dataset)">
@@ -58,10 +58,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
+
+                <div ng-repeat="catalog in displayManager.datasetCatalogRepository.catalogs" class="panel panel-default">
+
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" data-target="#datamogovdatasets">Data.Mo.Gov</a>
+                            <a data-toggle="collapse" data-parent="#accordion" data-target="{{'#' + catalog.name}}"> {{catalog.name}} Catalog</a>
+                        </h4>
+                    </div>
+                    <div id="{{catalog.name}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <ul class="list-unstyled">
+                                <li ng-repeat="dataset in catalog.datasets">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td rowspan="2"><button ng-click="displayManager.datasetRepository.addDataset(dataset)">Add</button>
+                                            <td>{{dataset.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{dataset.description}}</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" data-target="#datamogovdatasets">Data.Mo.Gov Catalog</a>
                         </h4>
                     </div>
                     <div id="datamogovdatasets" class="panel-collapse collapse">
@@ -69,7 +97,7 @@
                             List of datasets viewable from data.mo.gov
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
 
